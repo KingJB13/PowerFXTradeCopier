@@ -5,7 +5,7 @@ namespace PowerFXTradeCopier.Domain.Interfaces;
 public interface IUnitOfWork
 {
     ISignalRepository Signals { get; }
-    ICoachRepository Coaches { get; }
+    ISignalProviderRepository SignalProvider { get; }
 
     Task<int> SaveChangesAsync(
         CancellationToken cancellationToken = default

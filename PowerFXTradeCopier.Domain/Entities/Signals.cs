@@ -22,9 +22,9 @@ public class Signals : AuditableEntity<Guid>
     public double? ClosingPrice { get; private set; } = null;
     public bool IsClosed { get; private set; } = false;
     // Relationship
-    [ForeignKey(nameof(Coach))]
-    public Guid CoachID { get; private set; }
-    public Coach Coach { get; private set; }
+    [ForeignKey(nameof(SignalProvider))]
+    public Guid SignalProviderID { get; private set; }
+    public SignalProvider SignalProvider { get; private set; }
 
     private Signals(
         Guid id,
@@ -35,7 +35,7 @@ public class Signals : AuditableEntity<Guid>
         double entry,
         double stopLoss,
         double[] targetProfit,
-        Guid coachID
+        Guid signalProviderID
     ) : base(id)
     {
         MessageID = messageID;
@@ -45,7 +45,7 @@ public class Signals : AuditableEntity<Guid>
         Entry = entry;
         StopLoss = stopLoss;
         TargetProfit = [.. targetProfit];
-        CoachID = coachID;
+        SignalProviderID = signalProviderID;
         CloseReason = CloseReason.None;
         RunningResult = Result.Pending;
         SignalResult = Result.Pending;

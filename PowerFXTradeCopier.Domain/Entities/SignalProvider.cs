@@ -3,7 +3,7 @@
 namespace PowerFXTradeCopier.Domain.Entities;
 
 #pragma warning disable CS8618
-public class Coach : Entity<Guid>
+public class SignalProvider : Entity<Guid>
 {
     public string TopicName { get; private set; }
     public int TopicID { get; private set; }
@@ -14,7 +14,7 @@ public class Coach : Entity<Guid>
     private readonly List<Signals> _signals = [];
     public IReadOnlyCollection<Signals> Signal => _signals.AsReadOnly();
 
-    private Coach(
+    private SignalProvider(
         Guid id, 
         string topicName, 
         int topicID, 
@@ -28,7 +28,7 @@ public class Coach : Entity<Guid>
         IsEnabled = isEnabled;
     }
 
-    public static Coach Create(
+    public static SignalProvider Create(
         Guid id, 
         string topicName, 
         int topicID, 
@@ -45,7 +45,7 @@ public class Coach : Entity<Guid>
         if (senderID <= 0)
             throw new ArgumentException("Invalid sender ID.");
 
-        return new Coach(
+        return new SignalProvider(
             id, 
             topicName, 
             topicID, 
