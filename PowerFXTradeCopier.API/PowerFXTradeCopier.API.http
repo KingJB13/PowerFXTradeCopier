@@ -1,0 +1,6 @@
+@PowerFXTradeCopier.API_HostAddress = http://localhost:5179
+
+GET {{PowerFXTradeCopier.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
